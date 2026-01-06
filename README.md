@@ -7,7 +7,8 @@ A conversational AI assistant designed to provide mental wellness support and gu
 ## Demo Video
 
 You can watch a demo of the project here:  
-**[TalkBuddy AI Demo Video]()**  
+**[TalkBuddy AI Demo Video Web](https://youtu.be/3wH2iNIyO6M)**
+**[TalkBuddy AI Demo Video WhatsApp](https://youtu.be/q-kVubp0Tbc)**  
 
 
 ---
