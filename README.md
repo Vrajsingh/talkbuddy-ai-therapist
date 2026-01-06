@@ -1,29 +1,63 @@
-AI Mental Health Therapist – SafeSpace
+# TalkBuddy AI Therapist
 
-Your compassionate AI companion for emotional support, built with care and real-world tools. SafeSpace listens, understands, and responds with empathy — and knows when to escalate to emergency help.
+A conversational AI assistant designed to provide mental wellness support and guidance. This project is built using Python, FastAPI, and integrates AI-based responses.
 
-Equipped with an AI agent architecture, specialist healthcare models (MedGemma), and life-saving tools like emergency calling via Twilio, SafeSpace is designed to support mental well-being — safely and responsibly.
+---
 
-▶️ Watch the Setup Video 🎥 How to Build SafeSpace – Full Tutorial: 
+## Demo Video
 
-🚀 Quick Start
+You can watch a demo of the project here:  
+**[TalkBuddy AI Demo Video]()**  
 
-Clone the repo and run:
+
+---
+
+## Features
+
+- Interactive AI chat interface
+- Handles user queries with contextual understanding
+- State management using backend services
+- Easily extendable for multiple use-cases
+
+---
+
+## Tech Stack
+
+- **Backend:** Python, FastAPI, Uvicorn  
+- **AI & NLP:** LangChain, OpenAI, LangGraph, Ollama  
+- **APIs:** Google Maps, Geopy, Twilio  
+- **Frontend / Visualization:** Streamlit  
+- **HTTP Requests:** Requests  
+- **Configuration / Validation:** Pydantic  
+
+---
+
+## Installation
+
+1. Clone the repo:
 ```
-git clone https://github.com/AIwithhassan/safespace-ai-therapist.git
+git clone https://github.com/Vrajsingh/talkbuddy-ai-therapist.git
+cd talkbuddy-ai-therapist
 ```
 
-# Setup UV if not already: 
-
-https://www.youtube.com/watch?v=Dgf7Lp0B_hI
-
+2. Create and activate a virtual environment:
 ```
-uv sync
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Linux/Mac
+source venv/bin/activate
 ```
 
+3. Install dependencies (from pyproject.toml):
+```
+pip install .
+````
 
-That’s it. This command:
+Or, if you prefer using pip directly:
+```
+pip install fastapi geopy googlemaps langchain langchain-groq langchain-openai langgraph ollama pydantic python-multipart requests streamlit twilio uvicorn
+````
 
-Creates a virtual environment (if needed)
-Installs all dependencies from uv.lock
-Sets up the full environment exactly as intended
+
+
