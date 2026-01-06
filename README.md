@@ -60,5 +60,13 @@ Or, if you prefer using pip directly:
 pip install fastapi geopy googlemaps langchain langchain-groq langchain-openai langgraph ollama pydantic python-multipart requests streamlit twilio uvicorn
 ````
 
+4. Run Backend:
+```
+uv run backend/main.py
+```
 
+5. Run Frontend:
+```
+uv run streamlit run frontend.py
+```
 
