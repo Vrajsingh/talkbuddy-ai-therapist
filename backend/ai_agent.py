@@ -21,6 +21,11 @@ def emergency_call_tool() -> None:
     call_emergency()
 
 
+
+import googlemaps
+from config import GOOGLE_MAPS_API_KEY
+gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
+
 @tool
 def find_nearby_therapists_by_location(location: str) -> str:
     """
@@ -32,22 +37,38 @@ def find_nearby_therapists_by_location(location: str) -> str:
     Returns:
         str: A newline-separated string containing therapist names and contact info.
     """
-    return (
-        f"Here are some therapists near {location}, {location}:\n"
-        "- Dr. Ayesha Kapoor - +1 (555) 123-4567\n"
-        "- Dr. James Patel - +1 (555) 987-6543\n"
-        "- MindCare Counseling Center - +1 (555) 222-3333"
-    )
+
+    geocode_result = gmaps.geocode(location)
+    lat_lng = geocode_result[0]['geometry']['location']
+    lat, lng = lat_lng['lat'], lat_lng['lng']
+    places_result = gmaps.places_nearby(
+            location=(lat, lng),
+            radius=5000,
+            keyword="Psychotherapist"
+        )
+    output = [f"Therapists near {location}:"]
+    top_results = places_result['results'][:5]
+    for place in top_results:
+            name = place.get("name", "Unknown")
+            address = place.get("vicinity", "Address not available")
+            details = gmaps.place(place_id=place["place_id"], fields=["formatted_phone_number"])
+            phone = details.get("result", {}).get("formatted_phone_number", "Phone not available")
+
+            output.append(f"- {name} | {address} | {phone}")
+
+    
+    return "\n".join(output)
 
 
 # Step1: Create an AI Agent & Link to backend
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langgraph.prebuilt import create_react_agent
-from config import OPENAI_API_KEY
+from config import GROQ_API_KEY
 
 
 tools = [ask_mental_health_specialist, emergency_call_tool, find_nearby_therapists_by_location]
-llm = ChatOpenAI(model="gpt-4", temperature=0.2, api_key=OPENAI_API_KEY)
+#llm = ChatOpenAI(model="gpt-4", temperature=0.2, api_key=OPENAI_API_KEY)
+llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0.2, api_key=GROQ_API_KEY)
 graph = create_react_agent(llm, tools=tools)
 
 SYSTEM_PROMPT = """
