@@ -10,6 +10,7 @@ You can watch a demo of the project here:
 - **[TalkBuddy AI Demo Video Web](https://youtu.be/3wH2iNIyO6M)**
 - **[TalkBuddy AI Demo Video WhatsApp](https://youtu.be/q-kVubp0Tbc)**  
 
+<img width="1913" height="914" alt="Image" src="https://github.com/user-attachments/assets/1adb1d62-ab86-4aee-88d2-ff749308dcb5" />
 
 ---
 
